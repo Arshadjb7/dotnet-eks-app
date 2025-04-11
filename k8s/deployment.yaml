@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapiapp-deployment
+  labels:
+    app: mywebapiapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mywebapiapp
+  template:
+    metadata:
+      labels:
+        app: mywebapiapp
+    spec:
+      containers:
+      - name: mywebapiapp
+        image: arshadjb7/dotnet-eks-app:latest
+        ports:
+        - containerPort: 80
